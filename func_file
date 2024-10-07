@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "Started the program at $(date)"
+echo "Started program $0 with arguments $# with pid $$"
+
+for file in "$@"; do
+
+	grep new "$file"
+	grep_exit_status=$?
+
+	if [[ grip_exit_status -eq 0 ]]; then
+
+		echo "new already exists in file"
+
+	else
+
+		echo "File $file does not have the string new, adding one rn"
+		echo "## new" >> "$file"
+	fi
+done 
